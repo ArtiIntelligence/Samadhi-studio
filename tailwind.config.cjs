@@ -1,17 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
-        mystic: {
-          900: "#0a0f24",
-          800: "#101735",
-          700: "#1a2755",
-          accent: "#3b6eff"
+        samadhi: {
+          900: '#070821',
+          800: '#0a1333',
+          700: '#0f214d',
+          accent: '#334ee6'
         }
+      },
+      fontFamily: {
+        display: ['"Lora"', 'serif'],
+        body: ['"Inter"', 'sans-serif']
       }
     }
   },
-  plugins: []
+  plugins: [],
 }

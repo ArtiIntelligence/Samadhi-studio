@@ -1,6 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-  font-family: "Lora", serif;
+
+/* custom */
+:root{
+  --accent:#334ee6;
+  --dark-900:#070821;
+  --dark-800:#0a1333;
 }
+body{font-family: 'Lora', serif; background: linear-gradient(180deg,var(--dark-900) 0%, var(--dark-800) 70%);}
+.container{max-width:1100px;margin-left:auto;margin-right:auto;}
+.card{background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.04);}
+.btn-primary{background:var(--dark-900);border-radius:8px;padding:12px 20px;}
+.small-muted{color:rgba(255,255,255,0.65);}
+.text-accent{color:var(--accent);}
