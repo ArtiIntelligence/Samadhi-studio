@@ -1,37 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ContactForm from "../components/ContactForm";
 
-export default function Home() {
+export default function Home(){
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
-      <header className="flex justify-between items-center px-10 py-6 border-b border-gray-200 bg-white shadow-sm">
-        <h1 className="text-2xl font-bold text-blue-900">Школа массажа в Курске SAMADHI</h1>
-        <a href="tel:+79202600605" className="text-blue-900 text-sm hover:text-blue-700">
-          +7 (920) 260-06-05
-        </a>
-      </header>
+    <div id="home" style={{padding:40}}>
+      <section style={{textAlign:'center', padding:'60px 20px'}}>
+        <h1 style={{fontSize:56, color:'#c7e9ff', margin:0, textShadow:'0 0 20px rgba(99,102,241,0.5)'}}>Научись массажу с нуля.<br/><span style={{color:'#9fbce6'}}>Первый урок — бесплатно!</span></h1>
+        <p style={{marginTop:12, color:'#9fbce6'}}>Обучение массажу от опытных массажистов с нуля до уровня PRO.</p>
+      </section>
 
-      <main className="flex flex-col md:flex-row justify-between items-center px-10 py-16 max-w-7xl mx-auto flex-grow">
-        <div className="max-w-xl">
-          <h2 className="text-5xl font-extrabold leading-tight mb-6 text-gray-900">
-            Научись массажу с нуля.<br />
-            <span className="text-blue-900">Первый урок — бесплатно!</span>
-          </h2>
-          <p className="text-gray-600 mb-8">
-            Обучение массажу от опытных массажистов с нуля до уровня PRO.
-            Очные и онлайн форматы. С выдачей диплома государственного образца.
-          </p>
-          <Link
-            to="/courses"
-            className="bg-blue-900 text-white px-6 py-3 rounded-md text-lg hover:bg-blue-800 transition"
-          >
-            Записаться на бесплатный урок
-          </Link>
-        </div>
-        <div className="mt-10 md:mt-0">
-          <img src="/OIP.jpg" alt="Диплом" className="rounded-lg shadow-lg max-w-sm" />
-        </div>
-      </main>
+      <section style={{maxWidth:1100, margin:'0 auto', padding:20}}>
+        <h2 style={{color:'#bfefff'}}>Наши курсы</h2>
+        <p style={{color:'#9fbce6'}}>Кликни по экрану — увидишь всплеск энергии ✨</p>
+      </section>
+
+      <section style={{maxWidth:800, margin:'40px auto'}}>
+        <ContactForm />
+      </section>
     </div>
-  );
+  )
 }

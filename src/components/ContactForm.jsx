@@ -1,39 +1,26 @@
-import React, { useState } from 'react';
-import { sendTelegramMessage } from '../utils/telegram';
+import React, { useState } from "react";
+import { sendTelegramMessage } from "../utils/telegram";
 
 export default function ContactForm(){
-  const [loading, setLoading] = useState(false);
-  const [done, setDone] = useState(false);
-
-  async function onSubmit(e){
+  const [loading,setLoading]=useState(false);
+  const [done,setDone]=useState(false);
+  async function submit(e){
     e.preventDefault();
     const name = e.target.name.value.trim();
     const phone = e.target.phone.value.trim();
-    if(!name||!phone){ alert('Пожалуйста, заполните имя и телефон'); return; }
+    if(!name||!phone){ alert('Введите имя и телефон'); return; }
     setLoading(true);
-    const text = `<b>Заявка с сайта Samadhi Studio</b>\nИмя: ${name}\nТелефон: ${phone}`;
-    const res = await sendTelegramMessage(text);
+    const res = await sendTelegramMessage(`<b>Заявка</b>\nИмя: ${name}\nТелефон: ${phone}`);
     setLoading(false);
-    if(res && res.ok){ setDone(true); e.target.reset(); setTimeout(()=>setDone(false),5000); }
-    else { alert('Ошибка отправки. Проверьте бот/токен.'); console.error(res); }
+    if(res && res.ok){ setDone(true); e.target.reset(); setTimeout(()=>setDone(false),4000); }
+    else alert('Ошибка отправки');
   }
-
   return (
-    <div className="card p-8 rounded-xl max-w-2xl mx-auto">
-      <h3 className="text-2xl font-semibold mb-4">Оставьте заявку</h3>
-      <p className="small-muted mb-6">Мы перезвоним в течение 15 минут</p>
-      <form onSubmit={onSubmit} className="space-y-4">
-        <div>
-          <label className="block mb-2">Имя</label>
-          <input name="name" className="w-full p-3 rounded bg-transparent border border-white/10 text-white" />
-        </div>
-        <div>
-          <label className="block mb-2">Телефон</label>
-          <input name="phone" className="w-full p-3 rounded bg-transparent border border-white/10 text-white" />
-        </div>
-        <button type="submit" className="btn w-full mt-2">{loading? 'Отправка...' : 'Отправить заявку'}</button>
-        {done && <div className="text-green-400 mt-2">Спасибо! Мы свяжемся с вами.</div>}
-      </form>
-    </div>
+    <form onSubmit={submit} style={{maxWidth:600, margin:'0 auto', background:'rgba(255,255,255,0.02)', padding:20, borderRadius:12}}>
+      <div style={{marginBottom:10}}><label>Имя</label><input name="name" style={{width:'100%', padding:8, borderRadius:6}}/></div>
+      <div style={{marginBottom:10}}><label>Телефон</label><input name="phone" style={{width:'100%', padding:8, borderRadius:6}}/></div>
+      <button type="submit" style={{padding:'10px 16px', borderRadius:8}}>Отправить</button>
+      {done && <div style={{color:'#6ee7b7', marginTop:10}}>Спасибо! Мы свяжемся.</div>}
+    </form>
   )
 }
